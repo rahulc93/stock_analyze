@@ -1,0 +1,47 @@
+ 
+{% if stock_entry_list %}
+
+<table border = 3 align = center>
+    <thead border = 2 rowspan = 2>
+        <th colspan = 2>ID</th>
+        <th colspan = 2>SC_CODE</th>
+        <th colspan = 2>SC_NAME</th>
+        <th colspan = 2>SC_GROUP</th>
+        <th colspan = 2>SC_TYPE</th>
+        <th colspan = 2>OPEN</th>
+        <th colspan = 2>HIGH</th>
+        <th colspan = 2>LOW</th>
+        <th colspan = 2>CLOSE</th>
+        <th colspan = 2>LAST</th>
+        <th colspan = 2>PREVCLOSE</th>
+        <th colspan = 2>NO_TRADES</th>
+        <th colspan = 2>NO_OF_SHRS</th>
+        <th colspan = 2>NET_TURNOV</th>
+        <th colspan = 2>DATE</th>
+    </thead>
+    {% for stock in stock_entry_list %}
+    <tr rowspan = 2>
+        <td colspan = 2>{{ stock.id }}</td>
+        <td colspan = 2>{{ stock.SC_CODE }}</td>
+        <td colspan = 2>{{ stock.SC_NAME }}</td>
+        <td colspan = 2>{{ stock.SC_GROUP }}</td>
+        <td colspan = 2>{{ stock.SC_TYPE }}</td>
+        <td colspan = 2>{{ stock.OPEN }}</td>
+        <td colspan = 2>{{ stock.HIGH }}</td>
+        <td colspan = 2>{{ stock.LOW }}</td>
+        <td colspan = 2>{{ stock.CLOSE }}</td>
+        <td colspan = 2>{{ stock.LAST }}</td>
+        <td colspan = 2>{{ stock.PREVCLOSE }}</td>
+        <td colspan = 2>{{ stock.NO_TRADES }}</td>
+        <td colspan = 2>{{ stock.NO_OF_SHRS }}</td>
+        <td colspan = 2>{{ stock.NET_TURNOV }}</td>
+		<td colspan = 2>{{ stock.DATE }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+
+<p>No Stock entries are available. Enter values by calling the stock_enter method.</p>
+
+{% endif %}
