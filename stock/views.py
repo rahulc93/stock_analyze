@@ -148,6 +148,9 @@ def goc_range(request, comp_code, start_date, end_date):
     OPEN = []  # list of all Opening values from the required stock entries
     CLOSE = []  # list of all Closing values from the required stock entries
     response_data = {}  # dictionary storing the JSON data
+    print stock
+    print stock[0]
+    print stock[0][0]
     response_data['SC_CODE'] = stock[0][0].SC_CODE  # company unique code
     response_data['SC_NAME'] = stock[0][0].SC_NAME  # company name
     for currstock in stock:  # iterate through the list of stock entries
@@ -164,10 +167,10 @@ def goc_range(request, comp_code, start_date, end_date):
     plt.plot(OPEN)
     plt.ylabel('Open')
     plt.title('Opening Values')
-    plt.annotate('Maximum (%s)' % max(OPEN), xy=(OPEN.index(max(OPEN)), max(OPEN)), xytext=(len(OPEN) / 2, max(OPEN) + 2),
+    plt.annotate('Maximum (%s)' % max(OPEN), xy=(OPEN.index(max(OPEN)), max(OPEN)), xytext=(OPEN.index(max(OPEN)), (max(OPEN) + min(OPEN)) / 2),
             arrowprops=dict(facecolor='black', shrink=0.05),
             )
-    plt.annotate('Minimum (%s)' % min(OPEN), xy=(OPEN.index(min(OPEN)), min(OPEN)), xytext=(len(OPEN) / 2, min(OPEN) + 2),
+    plt.annotate('Minimum (%s)' % min(OPEN), xy=(OPEN.index(min(OPEN)), min(OPEN)), xytext=(OPEN.index(min(OPEN)), (max(OPEN) + min(OPEN)) / 2),
             arrowprops=dict(facecolor='red', shrink=0.05),
             )
     plt.grid(True)
@@ -175,10 +178,10 @@ def goc_range(request, comp_code, start_date, end_date):
     plt.plot(CLOSE)
     plt.ylabel('Close')
     plt.title('Closing Values')
-    plt.annotate('Maximum (%s)' % max(CLOSE), xy=(CLOSE.index(max(CLOSE)), max(CLOSE)), xytext=(len(CLOSE) / 2, max(CLOSE) + 2),
+    plt.annotate('Maximum (%s)' % max(CLOSE), xy=(CLOSE.index(max(CLOSE)), max(CLOSE)), xytext=(CLOSE.index(max(CLOSE)), (max(CLOSE) + min(CLOSE)) / 2),
             arrowprops=dict(facecolor='black', shrink=0.05),
             )
-    plt.annotate('Minimum (%s)' % min(CLOSE), xy=(CLOSE.index(min(CLOSE)), min(CLOSE)), xytext=(len(CLOSE) / 2, min(CLOSE) + 2),
+    plt.annotate('Minimum (%s)' % min(CLOSE), xy=(CLOSE.index(min(CLOSE)), min(CLOSE)), xytext=(CLOSE.index(min(CLOSE)), (max(CLOSE) + min(CLOSE)) / 2),
             arrowprops=dict(facecolor='red', shrink=0.05),
             )
     plt.grid(True)
